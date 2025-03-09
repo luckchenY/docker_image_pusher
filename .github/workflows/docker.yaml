@@ -138,8 +138,8 @@ jobs:
             
             # 将@sha256:等字符删除
             # image_name_tag="${image_name_tag%%@*}"
-            # new_image="$ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/$platform_prefix$name_space_prefix$image_name_tag"
-            new_image="ubantu22.04cuda11.8"
+            new_image="$ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/$platform_prefix$name_space_prefix$ubantu22.04cuda11.8"
+            
             echo "docker tag $image $new_image"
             docker tag $image $new_image
             echo "docker push $new_image"
@@ -148,11 +148,7 @@ jobs:
  
             # 也可以直接指定用户名
             docker login --username=MYsangsang crpi-d9t5jbbke73gpdxk.cn-guangzhou.personal.cr.aliyuncs.com -p zxcasdqwe123
-            # 停止firewalld服务
-            sudo systemctl stop firewalld  
- 
-            # 禁用firewalld服务，使其在系统启动时不自动启动
-            sudo systemctl disable firewalld  
+            
             # 然后再执行
             docker push $new_image
             echo "开始清理磁盘空间"
