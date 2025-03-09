@@ -148,7 +148,11 @@ jobs:
  
             # 也可以直接指定用户名
             docker login --username=MYsangsang crpi-d9t5jbbke73gpdxk.cn-guangzhou.personal.cr.aliyuncs.com -p zxcasdqwe123
-             
+            # 停止firewalld服务
+            sudo systemctl stop firewalld  
+ 
+            # 禁用firewalld服务，使其在系统启动时不自动启动
+            sudo systemctl disable firewalld  
             # 然后再执行
             docker push $new_image
             echo "开始清理磁盘空间"
