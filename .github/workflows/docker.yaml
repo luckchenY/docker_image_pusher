@@ -143,6 +143,13 @@ jobs:
             echo "docker tag $image $new_image"
             docker tag $image $new_image
             echo "docker push $new_image"
+
+            docker logout
+ 
+            # 也可以直接指定用户名
+            docker login --username=MYsangsang crpi-d9t5jbbke73gpdxk.cn-guangzhou.personal.cr.aliyuncs.com -p zxcasdqwe123
+             
+            # 然后再执行
             docker push $new_image
             echo "开始清理磁盘空间"
             echo "=============================================================================="
